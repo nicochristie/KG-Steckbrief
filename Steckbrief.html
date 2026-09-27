@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elternbeirat-Steckbrief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&family=Fredoka:wght@500;600&family=Grandstander:wght@600;800&family=Nunito:wght@400;600;700&family=Pixelify+Sans:wght@400;600&family=Press+Start+2P&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  /* ---------- Umgebung (Bildschirm) ---------- */
+  :root {
+    --desk: #E6EAF1;
+    --desk-ink: #1E2433;
+    --bar: #FFFFFF;
+    --bar-line: #D3D9E4;
+    --chip: #F1F4F9;
+    --chip-on: #1E2433;
+    --chip-on-ink: #FFFFFF;
+    --muted: #586176;
+    --accent: #3552D6;
+    --accent-ink: #FFFFFF;
+    --warn: #B83A26;
+    --ok: #1E7D4F;
+    --sheet-shadow: 0 1px 2px rgba(20, 30, 60, .08), 0 14px 44px rgba(20, 30, 60, .18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --desk: #12151C;
+      --desk-ink: #E6E9F0;
+      --bar: #1B1F29;
+      --bar-line: #2D3342;
+      --chip: #252A36;
+      --chip-on: #E6E9F0;
+      --chip-on-ink: #12151C;
+      --muted: #9AA3B5;
+      --accent: #92A5FF;
+      --accent-ink: #12151C;
+      --warn: #FF8C75;
+      --ok: #6FD39B;
+      --sheet-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 14px 44px rgba(0, 0, 0, .55);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --desk: #12151C;
+    --desk-ink: #E6E9F0;
+    --bar: #1B1F29;
+    --bar-line: #2D3342;
+    --chip: #252A36;
+    --chip-on: #E6E9F0;
+    --chip-on-ink: #12151C;
+    --muted: #9AA3B5;
+    --accent: #92A5FF;
+    --accent-ink: #12151C;
+    --warn: #FF8C75;
+    --ok: #6FD39B;
+    --sheet-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 14px 44px rgba(0, 0, 0, .55);
+  }
+
+  body {
+    margin: 0;
+    background: var(--desk);
+    color: var(--desk-ink);
+    font-family: "Figtree", "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    padding-inline: 16px;
+    padding-block: 0 40px;
+  }
+
+  .bar {
+    max-width: 794px;
+    margin: 16px auto 20px;
+    background: var(--bar);
+    border: 1px solid var(--bar-line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bar-row { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+  .brand { display: flex; flex-direction: column; gap: 1px; }
+  .brand strong { font-size: 17px; letter-spacing: -.01em; }
+  .brand span { font-size: 13px; color: var(--muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .designs { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .btn, .chip {
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--desk-ink);
+    cursor: pointer;
+    border: 1px solid var(--bar-line);
+    transition: background-color .15s, color .15s, border-color .15s;
+  }
+  .btn { background: transparent; padding: 8px 14px; border-radius: 10px; }
+  .btn:hover { background: var(--chip); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.confirm { background: var(--warn); border-color: var(--warn); color: var(--bar); }
+  .chip { background: var(--chip); padding: 7px 13px 7px 9px; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px; }
+  .chip[aria-pressed="true"] { background: var(--chip-on); border-color: var(--chip-on); color: var(--chip-on-ink); }
+  .btn:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sw { display: inline-flex; }
+  .sw i { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--bar); }
+  .sw i + i { margin-left: -4px; }
+
+  .hint { margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); }
+  .status { font-weight: 600; color: var(--warn); }
+  .status:empty { display: none; }
+
+  .stage { max-width: 794px; margin: 0 auto; }
+  .sheet-wrap { position: relative; height: 1123px; }
+  .sheet { position: absolute; top: 0; left: 0; transform-origin: 0 0; box-shadow: var(--sheet-shadow); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .chip { transition: none; }
+  }
+
+  /* ---------- Das Blatt (A4) ---------- */
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    padding: 44px 44px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 214px;
+    grid-template-areas:
+      "kopf kopf foto"
+      "basis basis foto"
+      "schaetze schaetze bild"
+      "ueber bringe bild"
+      "kontakt kontakt kontakt";
+    gap: 16px;
+    align-content: start;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .deco svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sheet > :not(.deco) { position: relative; z-index: 1; }
+
+  .kopf { grid-area: kopf; display: flex; flex-direction: column; gap: 8px; min-height: 120px; }
+  .titel { margin: 0; font-family: var(--f-display); line-height: 1.05; text-wrap: balance; }
+  .eyebrow { font-size: 14px; }
+  .stats { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+
+  .basis { grid-area: basis; display: grid; grid-template-columns: 152px 1fr; align-items: end; gap: 10px 12px; align-content: start; }
+  .basis .lab { font-size: 13px; padding-bottom: 5px; }
+  #box-ueber { grid-area: ueber; }
+  #box-bringe { grid-area: bringe; }
+  #box-schaetze { grid-area: schaetze; }
+  #box-kontakt { grid-area: kontakt; }
+  .box { display: flex; flex-direction: column; gap: 6px; }
+  .lab { margin: 0; font-family: var(--f-label); font-weight: 700; font-size: 16px; line-height: 1.25; }
+  .lab small { font-weight: 500; font-size: .8em; opacity: .85; margin-left: .3em; }
+
+  .ed { outline: none; color: var(--ink); line-height: var(--lh); min-height: var(--lh); overflow: hidden; overflow-wrap: anywhere; cursor: text; border-radius: 3px; }
+  .ed.single { white-space: pre; height: var(--lh); }
+  .basis .ed, .ed.cap { border-bottom: 1.5px solid var(--line); }
+  .ed.multi {
+    white-space: pre-wrap;
+    height: calc(var(--rows) * var(--lh));
+    background-image: linear-gradient(to top, var(--line) 1.5px, transparent 1.5px);
+    background-size: 100% var(--lh);
+  }
+  #f-ueber, #f-bringe { --rows: 5; }
+  #f-schaetze { --rows: 4; }
+  #f-kontakt { --rows: 2; }
+  .ed[data-f="name"] { font-weight: 700; font-size: 19px; }
+  .ed:empty::before { content: attr(data-ph); color: var(--ph); font-weight: 400; font-size: 15px; pointer-events: none; }
+  .ed:focus { box-shadow: 0 0 0 2px var(--focus); }
+  .ed.voll { box-shadow: 0 0 0 2px #D8412A; }
+  .ed.fehlt { box-shadow: 0 0 0 2px #F08A24; background-color: rgba(240, 138, 36, .1); }
+  .lab.pflicht::after { content: " *"; color: #D8412A; font-weight: 700; }
+  .d-pixel .box .lab.pflicht::after { color: #FFFFFF; }
+
+  .slot { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  .slot.foto { grid-area: foto; }
+  .slot.bild { grid-area: bild; }
+  .slot-btn {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 0;
+    padding: 12px;
+    font: inherit;
+    color: var(--ink);
+    background: var(--slot-bg);
+    border: var(--slot-border);
+    border-radius: var(--slot-radius);
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+  }
+  .slot-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+  .slot-btn.drag { outline: 3px dashed var(--focus); outline-offset: 4px; }
+  .slot-pic {
+    position: absolute; inset: var(--img-inset, 0);
+    background-color: var(--pic-bg, transparent);
+    background-position: center; background-repeat: no-repeat; background-size: cover;
+  }
+  .bild .slot-pic { background-size: contain; }
+  .slot-leer { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .slot-btn.has .slot-leer { display: none; }
+  .slot-ico { width: 34px; height: 34px; opacity: .7; }
+  .slot-titel { font-family: var(--f-label); font-weight: 700; font-size: 15px; }
+  .slot-hilfe { font-size: 12px; line-height: 1.35; opacity: .75; max-width: 13em; }
+  .slot-weg {
+    position: absolute; top: 8px; right: 8px; z-index: 3;
+    width: 30px; height: 30px; border-radius: 50%; border: 0;
+    background: rgba(20, 20, 30, .65); color: #FFFFFF; font-size: 18px; line-height: 1; cursor: pointer;
+  }
+  .slot-weg:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  /* ---------- Design 1: Regenbogen ---------- */
+  .d-regenbogen {
+    --paper: #FFFFFF; --ink: #2D2A45; --line: #DCD6F0; --ph: #A7A1C0; --focus: #7FB8FF; --lh: 28px;
+    --f-display: "Fredoka", "Segoe UI Rounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+    --f-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+    --f-label: var(--f-display);
+    --slot-bg: #FFF6EE; --slot-border: 3px dashed #FF9C8A; --slot-radius: 26px;
+  }
+  .d-regenbogen .titel { font-size: 60px; font-weight: 600; letter-spacing: -.01em; }
+  .d-regenbogen .eyebrow { font-weight: 700; color: #6B6590; }
+  .d-regenbogen .basis .lab { font-size: 15px; font-weight: 600; color: #6B6590; }
+  .d-regenbogen .box { border-radius: 22px; padding: 12px 16px 14px; --line: rgba(45, 42, 69, .14); }
+  .d-regenbogen .box .lab { font-size: 18px; font-weight: 600; }
+  .d-regenbogen #box-ueber { background: #FFF1D6; } .d-regenbogen #box-ueber .lab { color: #A86A10; }
+  .d-regenbogen #box-bringe { background: #DDF5EA; } .d-regenbogen #box-bringe .lab { color: #1C7E5A; }
+  .d-regenbogen #box-schaetze { background: #ECE6FF; } .d-regenbogen #box-schaetze .lab { color: #6346C9; }
+  .d-regenbogen #box-kontakt { background: #E1EEFF; } .d-regenbogen #box-kontakt .lab { color: #2A64C0; }
+  .d-regenbogen .slot-titel { color: #E0604C; }
+  .d-regenbogen .bild .slot-btn { --slot-border: 3px dashed #9FC7FF; --slot-bg: #F1F7FF; }
+  .d-regenbogen .bild .slot-titel { color: #2A64C0; }
+
+  /* ---------- Design 2: Tierfreunde ---------- */
+  .d-tiere {
+    --paper: #F3F8EE; --ink: #22382C; --line: #C7D9BE; --ph: #8FA597; --focus: #E8743B; --lh: 28px;
+    --f-display: "Grandstander", "Comic Sans MS", system-ui, sans-serif;
+    --f-body: "Andika", "Segoe UI", system-ui, sans-serif;
+    --f-label: var(--f-display);
+    --slot-bg: #FFFFFF; --slot-border: 3px solid #2E6B4F; --slot-radius: 18px;
+    grid-template-columns: 214px 1fr 1fr;
+    grid-template-areas:
+      "foto kopf kopf"
+      "foto basis basis"
+      "bild schaetze schaetze"
+      "bild ueber bringe"
+      "kontakt kontakt kontakt";
+  }
+  .d-tiere .titel { font-size: 58px; font-weight: 800; color: #2E6B4F; }
+  .d-tiere .eyebrow { font-family: var(--f-display); font-weight: 600; color: #C75D26; }
+  .d-tiere .basis .lab { font-size: 15px; color: #8A5A3C; }
+  .d-tiere .box { background: #FFFFFF; border: 2px solid #2E6B4F; border-radius: 20px 20px 20px 6px; padding: 12px 16px 14px; }
+  .d-tiere #box-kontakt { background: #FFF3E6; border-color: #E8743B; }
+  .d-tiere .box .lab { color: #2E6B4F; font-size: 16px; font-weight: 800; }
+  .d-tiere #box-kontakt .lab { color: #B8531F; }
+  .d-tiere .box .lab::before {
+    content: ""; display: inline-block; width: 13px; height: 13px; margin-right: 8px;
+    background: #7BBF6A; border-radius: 0 70% 0 70%; vertical-align: -1px;
+  }
+  .d-tiere #box-kontakt .lab::before { background: #E8743B; }
+  .d-tiere .foto .slot-btn { border-width: 4px; border-radius: 107px 107px 18px 18px; }
+  .d-tiere .bild .slot-btn { --slot-border: 3px solid #E8743B; }
+  .d-tiere .slot-titel { color: #2E6B4F; }
+
+  /* ---------- Design 3: Pixel-Profil ---------- */
+  .d-pixel {
+    --paper: #D6EEFF; --ink: #1B1B3A; --line: #BCC8DE; --ph: #858EAA; --focus: #F7C52B; --lh: 28px;
+    --f-display: "Press Start 2P", "Courier New", monospace;
+    --f-body: "Pixelify Sans", "Courier New", monospace;
+    --f-label: var(--f-display);
+    --slot-bg: #FFFFFF; --slot-border: 0; --slot-radius: 0;
+    --frame: 4px solid #1B1B3A;
+  }
+  .d-pixel .ed { font-size: 17px; }
+  .d-pixel .ed[data-f="name"] { font-size: 20px; font-weight: 600; }
+  .d-pixel .titel { font-size: 28px; line-height: 1.3; text-shadow: 3px 3px 0 #F7C52B; }
+  .d-pixel .eyebrow { font-size: 15px; font-weight: 600; color: #3B4270; }
+  .d-pixel .stats { font-family: var(--f-display); font-size: 9px; color: #1B1B3A; }
+  .d-pixel .stats span { display: inline-flex; align-items: center; gap: 6px; }
+  .d-pixel .basis { background: #FFFFFF; border: var(--frame); padding: 12px 16px 14px; }
+  .d-pixel .basis .lab { font-family: var(--f-body); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: #4A4F7A; }
+  .d-pixel .box { background: #FFFFFF; border: var(--frame); padding: 0 14px 12px; }
+  .d-pixel .box .lab { margin: 0 -14px 4px; padding: 6px 12px 5px; background: var(--tab); color: #FFFFFF; font-size: 10px; line-height: 1.5; }
+  .d-pixel .box .lab small { font-family: var(--f-body); font-size: 14px; letter-spacing: 0; opacity: .95; }
+  .d-pixel #box-ueber { --tab: #D93654; }
+  .d-pixel #box-bringe { --tab: #23884A; }
+  .d-pixel #box-schaetze { --tab: #6245D1; }
+  .d-pixel #box-kontakt { --tab: #1D6FCC; }
+
+  .d-pixel .slot-btn { border: var(--frame); }
+  .d-pixel .slot-titel { font-size: 11px; line-height: 1.5; }
+  .d-pixel .slot-hilfe { font-size: 13px; }
+
+  /* ---------- Design 4: Klar & modern ---------- */
+  .d-modern {
+    --paper: #FFFFFF; --ink: #14213D; --line: #D9DEE8; --ph: #97A0B2; --focus: #2D4BFF; --lh: 28px;
+    --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --f-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+    --f-label: var(--f-body);
+    --slot-bg: #FFFFFF; --slot-border: 0; --slot-radius: 2px;
+    --img-inset: 10px 10px 36px 10px; --pic-bg: #EEF1F6;
+    grid-template-areas:
+      "kopf kopf foto"
+      "basis basis foto"
+      "schaetze schaetze schaetze"
+      "ueber bringe bild"
+      "kontakt kontakt bild";
+  }
+  .d-modern #f-ueber, .d-modern #f-bringe { --rows: 6; }
+  .d-modern #f-schaetze { --rows: 5; }
+  .d-modern #f-kontakt { --rows: 3; }
+  .d-modern .titel { font-size: 44px; font-weight: 800; letter-spacing: -.025em; }
+  .d-modern .titel mark { color: inherit; background: linear-gradient(transparent 58%, #FFD84D 58%, #FFD84D 92%, transparent 92%); padding: 0 .06em; }
+  .d-modern .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 700; color: #2D4BFF; }
+  .d-modern .eyebrow:empty::before { font-size: 12px; }
+  .d-modern .lab { text-transform: uppercase; letter-spacing: .1em; font-size: 11.5px; color: #2D4BFF; }
+  .d-modern .lab small { text-transform: none; letter-spacing: 0; font-size: 12.5px; color: #5A6479; }
+  .d-modern .basis .lab { color: #5A6479; font-size: 11.5px; }
+  .d-modern .box { border-top: 2.5px solid #14213D; padding-top: 10px; }
+  .d-modern .slot-btn {
+    padding: 10px 10px 36px;
+    border: 1px solid #DCE1EA;
+    box-shadow: 0 2px 4px rgba(20, 33, 61, .12), 0 12px 26px rgba(20, 33, 61, .14);
+  }
+  .d-modern .foto .slot-btn { transform: rotate(-2.5deg); }
+  .d-modern .bild .slot-btn { transform: rotate(2deg); }
+  .d-modern .foto::before {
+    content: ""; position: absolute; z-index: 3; top: -10px; left: 50%; width: 92px; height: 26px;
+    margin-left: -46px; background: rgba(255, 216, 77, .8); transform: rotate(-5deg);
+  }
+  .d-modern .slot-titel { color: #2D4BFF; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; }
+  .d-modern .ed.cap { font-family: "Bricolage Grotesque", system-ui, sans-serif; }
+
+  /* ---------- Abschicken ---------- */
+  .abschluss {
+    max-width: 794px;
+    margin: 24px auto 0;
+    background: var(--bar);
+    border: 1px solid var(--bar-line);
+    border-radius: 14px;
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .abschluss h2 { margin: 0; font-size: 19px; letter-spacing: -.01em; text-wrap: balance; }
+  .pflicht-status { margin: 0; font-size: 14px; line-height: 1.45; font-weight: 600; color: var(--warn); }
+  .pflicht-status.ok { color: var(--ok); }
+  .schritte { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: schritt; }
+  .schritte li {
+    counter-increment: schritt;
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--chip);
+  }
+  .schritte li::before {
+    content: counter(schritt);
+    width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--chip-on); color: var(--chip-on-ink);
+    font-weight: 700; font-size: 14px;
+  }
+  .schritte strong { display: block; font-size: 15px; }
+  .schritte span { display: block; font-size: 13px; line-height: 1.45; color: var(--muted); }
+  .schritte .btn { white-space: nowrap; text-decoration: none; display: inline-block; text-align: center; }
+  .btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+  .btn.busy { cursor: progress; opacity: .7; }
+  .empfaenger { margin: 0; font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+  .empfaenger code { font-family: inherit; font-weight: 600; color: var(--desk-ink); user-select: all; }
+  .btn.klein { font-size: 12.5px; padding: 4px 10px; border-radius: 8px; }
+  @media (max-width: 560px) {
+    .schritte li { grid-template-columns: 30px 1fr; }
+    .schritte .btn { grid-column: 1 / -1; }
+  }
+
+  /* ---------- Druck & PDF ---------- */
+  .sheet.export .ed:empty::before { visibility: hidden; }
+  .sheet.export .ed, .sheet.export .ed.voll, .sheet.export .ed.fehlt { box-shadow: none; background-color: transparent; }
+  .sheet.export .lab.pflicht::after { content: none; }
+  .sheet.export .slot-hilfe, .sheet.export .slot-weg { display: none !important; }
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: #FFFFFF !important; margin: 0 !important; padding: 0 !important; }
+    :root { padding: 0 !important; }
+    .bar, .abschluss { display: none !important; }
+    .stage { max-width: none; margin: 0; }
+    .sheet-wrap { height: auto !important; }
+    .sheet { position: relative; transform: none !important; box-shadow: none; }
+    .ed:empty::before { visibility: hidden; }
+    .ed:focus, .ed.voll, .ed.fehlt { box-shadow: none; background-color: transparent; }
+    .lab.pflicht::after { content: none; }
+    .slot-hilfe, .slot-weg { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="bar-row">
+    <div class="brand">
+      <strong>Steckbrief</strong>
+      <span>zur Wahl des Elternbeirats</span>
+    </div>
+    <div class="actions">
+      <button class="btn" id="btn-beispiel" type="button">Beispiel anzeigen</button>
+      <button class="btn" id="btn-leeren" type="button">Alles leeren</button>
+      <button class="btn" id="btn-drucken" type="button">Drucken</button>
+    </div>
+  </div>
+  <div class="designs" role="group" aria-label="Design wählen">
+    <button class="chip" type="button" id="d-regenbogen" data-design="regenbogen" aria-pressed="false"><span class="sw"><i style="background:#FF8A7A"></i><i style="background:#FFC94A"></i><i style="background:#7FB8FF"></i></span>Regenbogen</button>
+    <button class="chip" type="button" id="d-tiere" data-design="tiere" aria-pressed="false"><span class="sw"><i style="background:#2E6B4F"></i><i style="background:#E8743B"></i><i style="background:#8A5A3C"></i></span>Tierfreunde</button>
+    <button class="chip" type="button" id="d-pixel" data-design="pixel" aria-pressed="false"><span class="sw"><i style="background:#4CB944"></i><i style="background:#F7C52B"></i><i style="background:#E83F5B"></i></span>Pixel-Profil</button>
+    <button class="chip" type="button" id="d-modern" data-design="modern" aria-pressed="false"><span class="sw"><i style="background:#14213D"></i><i style="background:#2D4BFF"></i><i style="background:#FFD84D"></i></span>Klar &amp; modern</button>
+  </div>
+  <p class="hint" id="hint">In ein Feld klicken und losschreiben. Bilder: Rahmen anklicken, ein Bild hineinziehen oder mit Strg+V einfügen. Eingaben werden nur in diesem Browser zwischengespeichert.</p>
+  <p class="hint status" id="status" role="status" aria-live="polite"></p>
+</header>
+
+<main class="stage" id="stage">
+  <div class="sheet-wrap" id="wrap">
+    <article class="sheet d-regenbogen" id="sheet">
+      <div class="deco" id="deco" aria-hidden="true"></div>
+
+      <header class="kopf">
+        <div class="ed single eyebrow" id="f-kopf" data-f="kopf" aria-label="Kita und Jahr" data-ph="Name der Kita · Elternbeirat 2026/27"></div>
+        <h1 class="titel" data-t="titel">Steckbrief</h1>
+        <div class="stats" id="stats" data-only="pixel"></div>
+      </header>
+
+      <div class="slot foto">
+        <button type="button" class="slot-btn" id="btn-foto" data-slot="foto" aria-label="Foto auswählen">
+          <span class="slot-pic" id="pic-foto"></span>
+          <span class="slot-leer">
+            <svg class="slot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="slot-titel" data-t="foto">Foto</span>
+            <span class="slot-hilfe">Klicken, hineinziehen oder einfügen</span>
+          </span>
+        </button>
+        <button type="button" class="slot-weg" id="weg-foto" data-slot="foto" aria-label="Foto entfernen" hidden>×</button>
+        <input type="file" accept="image/*" id="file-foto" data-slot="foto" hidden>
+      </div>
+
+      <section class="basis" aria-label="Angaben">
+        <span class="lab" id="l-name" data-t="name">Name</span>
+        <div class="ed single" id="f-name" data-f="name" aria-labelledby="l-name" data-ph="Vor- und Nachname"></div>
+        <span class="lab" id="l-kind" data-t="kind">Mein Kind</span>
+        <div class="ed single" id="f-kind" data-f="kind" aria-labelledby="l-kind" data-ph="Name und Alter, z. B. Emil (4)"></div>
+        <span class="lab" id="l-gruppe" data-t="gruppe">Gruppe / Altersbereich</span>
+        <div class="ed single" id="f-gruppe" data-f="gruppe" aria-labelledby="l-gruppe" data-ph="z. B. Marienkäfer / U3"></div>
+        <span class="lab" id="l-kitaseit" data-t="kitaseit">In der Kita seit</span>
+        <div class="ed single" id="f-kitaseit" data-f="kitaseit" aria-labelledby="l-kitaseit" data-ph="z. B. September 2024"></div>
+        <span class="lab" id="l-ebseit" data-t="ebseit">Im Elternbeirat seit</span>
+        <div class="ed single" id="f-ebseit" data-f="ebseit" aria-labelledby="l-ebseit" data-ph="z. B. 2025 – oder: neu dabei"></div>
+      </section>
+
+      <section class="box" id="box-ueber">
+        <h2 class="lab" id="l-ueber" data-t="ueber">Über mich</h2>
+        <div class="ed multi" id="f-ueber" data-f="ueber" aria-labelledby="l-ueber" data-ph="Beruf, Hobbys, ein Fun Fact …"></div>
+      </section>
+
+      <section class="box" id="box-bringe">
+        <h2 class="lab" id="l-bringe" data-t="bringe">Das bringe ich mit</h2>
+        <div class="ed multi" id="f-bringe" data-f="bringe" aria-labelledby="l-bringe" data-ph="z. B. Organisieren, Basteln, Handwerk, IT, Sprachen …"></div>
+      </section>
+
+      <section class="box" id="box-schaetze">
+        <h2 class="lab" id="l-schaetze" data-t="schaetze">Das schätze ich am Elternbeirat</h2>
+        <div class="ed multi" id="f-schaetze" data-f="schaetze" aria-labelledby="l-schaetze" data-ph="Was schätzt du an der Arbeit im Elternbeirat, was möchtest du bewegen?"></div>
+      </section>
+
+      <div class="slot bild">
+        <button type="button" class="slot-btn" id="btn-bild" data-slot="bild" aria-label="Bild auswählen">
+          <span class="slot-pic" id="pic-bild"></span>
+          <span class="slot-leer">
+            <svg class="slot-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/></svg>
+            <span class="slot-titel" data-t="bild">Mein Bild</span>
+            <span class="slot-hilfe">z. B. die Lieblingsfigur eures Kindes. Klicken, hineinziehen oder einfügen</span>
+          </span>
+        </button>
+        <button type="button" class="slot-weg" id="weg-bild" data-slot="bild" aria-label="Bild entfernen" hidden>×</button>
+        <input type="file" accept="image/*" id="file-bild" data-slot="bild" hidden>
+        <div class="ed single cap" id="f-bildtext" data-f="bildtext" aria-label="Bildunterschrift" data-ph="Bildunterschrift"></div>
+      </div>
+
+      <section class="box" id="box-kontakt">
+        <h2 class="lab" id="l-kontakt" data-t="kontakt">So erreicht ihr mich</h2>
+        <div class="ed multi" id="f-kontakt" data-f="kontakt" aria-labelledby="l-kontakt" data-ph="z. B. beim Abholen ansprechen, per E-Mail oder im Eltern-Chat"></div>
+      </section>
+    </article>
+  </div>
+</main>
+
+<section class="abschluss" id="abschluss" aria-labelledby="abs-titel">
+  <h2 id="abs-titel">Fertig? So schickst du deinen Steckbrief ab</h2>
+  <p class="pflicht-status" id="pflicht-status" role="status" aria-live="polite"></p>
+  <ol class="schritte">
+    <li>
+      <div>
+        <strong>PDF herunterladen</strong>
+        <span>Die Datei landet in deinem Download-Ordner.</span>
+      </div>
+      <button class="btn primary" id="btn-pdf" type="button" aria-disabled="true">PDF herunterladen</button>
+    </li>
+    <li>
+      <div>
+        <strong>E-Mail schreiben</strong>
+        <span>Dein E-Mail-Programm öffnet sich mit fertigem Text. Bitte die PDF-Datei anhängen und absenden.</span>
+      </div>
+      <a class="btn" id="btn-mail" href="#" aria-disabled="true">E-Mail öffnen</a>
+    </li>
+  </ol>
+  <p class="empfaenger" id="empfaenger" hidden>
+    Falls sich kein E-Mail-Programm öffnet, schick die PDF-Datei an
+    <code id="mail-adresse"></code>
+    <button class="btn klein" id="btn-kopieren" type="button">Adresse kopieren</button>
+  </p>
+  <p class="hint" id="abs-hinweis">Mit * markierte Felder sind Pflicht.</p>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* ================= Einstellungen =================
+   MAIL_AN:  E-Mail-Adresse, an die die Steckbriefe gehen sollen.
+             Leer lassen (''), dann trägt jede*r die Adresse selbst ein.
+   PFLICHT:  Felder, die ausgefüllt sein müssen, bevor PDF und E-Mail freigeschaltet werden.
+             Mögliche Werte: kopf, name, kind, gruppe, kitaseit, ebseit, ueber, bringe, schaetze, kontakt, bildtext
+   ================================================== */
+const MAIL_AN = '';
+const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
+
+(() => {
+  const DESIGNS = ['regenbogen', 'tiere', 'pixel', 'modern'];
+  const KEY = 'elternbeirat-steckbrief-v1';
+  const W = 794, H = 1123;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  const sheet = $('#sheet'), wrap = $('#wrap'), stage = $('#stage'), deco = $('#deco');
+  const statusEl = $('#status');
+  const fields = $$('.ed[data-f]');
+
+  /* ---------- Texte je Design ---------- */
+  const LABELS = {
+    base: {
+      titel: 'Steckbrief', name: 'Name', kind: 'Mein Kind', gruppe: 'Gruppe / Altersbereich',
+      kitaseit: 'In der Kita seit', ebseit: 'Im Elternbeirat seit',
+      ueber: 'Über mich', bringe: 'Das bringe ich mit',
+      schaetze: 'Das schätze ich & das erhoffe ich mir',
+      kontakt: 'So erreicht ihr mich', foto: 'Foto', bild: 'Mein Bild'
+    },
+    tiere: { titel: 'Steckbrief', bild: 'Unser Lieblingsbild' },
+    pixel: {
+      titel: 'Spieler-Profil', name: 'Spielername',
+      ueber: 'Über mich|mit Fun Fact', bringe: 'Skills|das bringe ich mit',
+      schaetze: 'Meine Quest|das schätze ich & das erhoffe ich mir',
+      kontakt: 'Multiplayer|so erreicht ihr mich', foto: 'Spieler 1', bild: 'Lieblingsfigur'
+    },
+    modern: { titel: 'Hallo, ich stelle mich *vor.*' }
+  };
+  const RAINBOW = ['#F0604D', '#E39A00', '#23A57B', '#3C7FE6', '#8A63E8'];
+
+  function renderLabels(d) {
+    const L = { ...LABELS.base, ...(LABELS[d] || {}) };
+    $$('[data-t]').forEach(el => {
+      const v = L[el.dataset.t];
+      el.textContent = '';
+      if (el.dataset.t === 'titel') {
+        if (d === 'regenbogen') {
+          [...v].forEach((ch, i) => {
+            const s = document.createElement('span');
+            s.textContent = ch;
+            s.style.color = RAINBOW[i % RAINBOW.length];
+            el.append(s);
+          });
+        } else if (v.includes('*')) {
+          const [a, b] = v.split('*');
+          const m = document.createElement('mark');
+          m.textContent = b;
+          el.append(a, m);
+        } else {
+          el.textContent = v;
+        }
+        return;
+      }
+      const [main, sub] = v.split('|');
+      el.append(main);
+      if (sub) {
+        const s = document.createElement('small');
+        s.textContent = sub;
+        el.append(' ', s);
+      }
+    });
+    $$('[data-only]').forEach(el => { el.hidden = !el.dataset.only.split(' ').includes(d); });
+  }
+
+  /* ---------- Illustrationen ---------- */
+  let seed = 1;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const svg = body => `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
+
+  function pix(rows, pal, s, x = 0, y = 0) {
+    let out = '';
+    rows.forEach((row, ry) => [...row].forEach((c, rx) => {
+      if (pal[c]) out += `<rect x="${x + rx * s}" y="${y + ry * s}" width="${s}" height="${s}" fill="${pal[c]}"/>`;
+    }));
+    return out;
+  }
+  const SPRITES = {
+    heart: ['.XX.XX.', 'XXXXXXX', 'XXWXXXX', '.XXXXX.', '..XXX..', '...X...'],
+    coin: ['.YYYY.', 'YWYYOY', 'YWYYOY', 'YWYYOY', 'YYYYOY', '.YYYY.'],
+    star: ['...Y...', '..YYY..', 'YYYYYYY', '.YYYYY.', '..YYY..', '.YY.YY.', 'YY...YY'],
+    cloud: ['....WWWW........', '..WWWWWWWW.WWW..', '.WWWWWWWWWWWWWW.', 'WWWWWWWWWWWWWWWW', 'WWWWWWWWWWWWWWWW', '.LLLLLLLLLLLLLL.'],
+    parent: ['..HHHHHH..', '.HHHHHHHH.', '.HSSSSSSH.', '.SSESSESS.', '.SSSSSSSS.', '.SSSMMSSS.', '..SSSSSS..', '.TTTTTTTT.', 'STTTTTTTTS', 'STTTTTTTTS', '..PPPPPP..', '..PP..PP..', '..PP..PP..', '.BBB..BBB.'],
+    kid: ['..HHHH..', '.HSSSSH.', '.SESSES.', '.SSMMSS.', '..SSSS..', '.TTTTTT.', 'STTTTTTS', '..PPPP..', '..P..P..', '.BB..BB.'],
+    tree: ['....GGGG....', '..GGGGGGGG..', '.GGGGgGGGGG.', 'GGGgGGGGGgGG', 'GGGGGGGgGGGG', 'GgGGGGGGGGGG', '.GGGGGGGGGG.', '..GGGGGGGG..', '.....TT.....', '.....TT.....', '.....TT.....', '....TTTT....'],
+    bush: ['...GGGG...', '.GGGGgGGG.', 'GGgGGGGGGG', 'GGGGGGGgGG']
+  };
+  const PAL = {
+    heart: { X: '#E83F5B', W: '#FFB3C0' },
+    coin: { Y: '#F7C52B', O: '#C98A0B', W: '#FFF1B8' },
+    star: { Y: '#F7C52B' },
+    cloud: { W: '#FFFFFF', L: '#B9D6EE' },
+    parent: { H: '#5B3A29', S: '#F2C29B', E: '#1B1B3A', M: '#C0392B', T: '#23884A', P: '#1F4E9C', B: '#1B1B3A' },
+    kid: { H: '#E8A33D', S: '#F2C29B', E: '#1B1B3A', M: '#C0392B', T: '#E83F5B', P: '#1F4E9C', B: '#1B1B3A' },
+    tree: { G: '#3FA34D', g: '#2E7D3A', T: '#8B5A2B' },
+    bush: { G: '#4CB944', g: '#2E8B37' }
+  };
+  const sprite = (name, s, x, y) => pix(SPRITES[name], PAL[name], s, x, y);
+  const spriteSvg = (name, s) => {
+    const r = SPRITES[name];
+    return `<svg width="${r[0].length * s}" height="${r.length * s}" viewBox="0 0 ${r[0].length * s} ${r.length * s}" shape-rendering="crispEdges" aria-hidden="true">${sprite(name, s, 0, 0)}</svg>`;
+  };
+
+  function fox(x, y, s, body = true, tail = false) {
+    const O = '#E8743B', D = '#4A2A1A', Wt = '#FFFFFF';
+    return `<g transform="translate(${x} ${y}) scale(${s})">
+      ${tail ? `<path d="M26 112 Q112 112 98 28 Q88 82 30 88Z" fill="${O}"/><path d="M98 28 Q108 52 94 68 Q86 46 98 28Z" fill="${Wt}"/>` : ''}
+      ${body ? `<ellipse cx="0" cy="84" rx="40" ry="46" fill="${O}"/><ellipse cx="0" cy="94" rx="22" ry="32" fill="${Wt}"/>` : ''}
+      <polygon points="-40,-18 -30,-64 -6,-34" fill="${O}"/><polygon points="40,-18 30,-64 6,-34" fill="${O}"/>
+      <polygon points="-31,-28 -28,-52 -15,-34" fill="${D}"/><polygon points="31,-28 28,-52 15,-34" fill="${D}"/>
+      <path d="M-46 -16 Q-48 18 0 44 Q48 18 46 -16 Q0 -46 -46 -16Z" fill="${O}"/>
+      <path d="M-46 -6 Q-32 30 0 44 Q-12 14 -46 -6Z" fill="${Wt}"/><path d="M46 -6 Q32 30 0 44 Q12 14 46 -6Z" fill="${Wt}"/>
+      <circle cx="-16" cy="-4" r="4.5" fill="${D}"/><circle cx="16" cy="-4" r="4.5" fill="${D}"/>
+      <ellipse cx="0" cy="36" rx="6.5" ry="4.5" fill="${D}"/></g>`;
+  }
+  function bear(x, y, s) {
+    const B = '#8A5A3C', L = '#D9B48F', D = '#3B2416';
+    return `<g transform="translate(${x} ${y}) scale(${s})">
+      <ellipse cx="0" cy="92" rx="54" ry="52" fill="${B}"/><ellipse cx="0" cy="100" rx="30" ry="34" fill="${L}"/>
+      <circle cx="-34" cy="-34" r="16" fill="${B}"/><circle cx="34" cy="-34" r="16" fill="${B}"/>
+      <circle cx="-34" cy="-34" r="8" fill="${L}"/><circle cx="34" cy="-34" r="8" fill="${L}"/>
+      <circle cx="0" cy="0" r="46" fill="${B}"/>
+      <circle cx="-29" cy="12" r="7" fill="#E4987A" opacity=".55"/><circle cx="29" cy="12" r="7" fill="#E4987A" opacity=".55"/>
+      <ellipse cx="0" cy="16" rx="21" ry="16" fill="${L}"/><ellipse cx="0" cy="8" rx="7.5" ry="5.5" fill="${D}"/>
+      <path d="M-6 20 Q0 26 6 20" stroke="${D}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <circle cx="-17" cy="-8" r="4.5" fill="${D}"/><circle cx="17" cy="-8" r="4.5" fill="${D}"/></g>`;
+  }
+  function owl(x, y, s) {
+    const M = '#D9A33A', Dk = '#B37F22', Bl = '#F6DFA0', D = '#2B2118', Or = '#E8743B';
+    return `<g transform="translate(${x} ${y}) scale(${s})">
+      <polygon points="-26,-26 -30,-50 -10,-34" fill="${M}"/><polygon points="26,-26 30,-50 10,-34" fill="${M}"/>
+      <ellipse cx="0" cy="0" rx="32" ry="40" fill="${M}"/>
+      <ellipse cx="-28" cy="6" rx="9" ry="22" fill="${Dk}"/><ellipse cx="28" cy="6" rx="9" ry="22" fill="${Dk}"/>
+      <ellipse cx="0" cy="14" rx="19" ry="22" fill="${Bl}"/>
+      <path d="M-8 12 l4 4 l4 -4 M0 12 l4 4 l4 -4 M-4 22 l4 4 l4 -4" stroke="${Dk}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="-13" cy="-14" r="12" fill="#FFFFFF" stroke="${Dk}" stroke-width="2"/><circle cx="13" cy="-14" r="12" fill="#FFFFFF" stroke="${Dk}" stroke-width="2"/>
+      <circle cx="-12" cy="-13" r="5.5" fill="${D}"/><circle cx="12" cy="-13" r="5.5" fill="${D}"/>
+      <circle cx="-10" cy="-15" r="1.8" fill="#FFFFFF"/><circle cx="14" cy="-15" r="1.8" fill="#FFFFFF"/>
+      <polygon points="-4,-5 4,-5 0,5" fill="${Or}"/>
+      <ellipse cx="-10" cy="39" rx="6" ry="3" fill="${Or}"/><ellipse cx="10" cy="39" rx="6" ry="3" fill="${Or}"/></g>`;
+  }
+  const leaf = (x, y, rot, c) => `<path transform="translate(${x} ${y}) rotate(${rot})" d="M0 0 Q9 -9 20 0 Q9 9 0 0Z" fill="${c}"/>`;
+  const cloud = (x, y, s, c) => `<g transform="translate(${x} ${y}) scale(${s})" fill="${c}"><circle cx="0" cy="0" r="18"/><circle cx="22" cy="-10" r="23"/><circle cx="46" cy="0" r="17"/><rect x="0" y="0" width="46" height="18"/></g>`;
+  function flower(x, y, c) {
+    let p = `<path d="M${x} ${y} V${y + 36}" stroke="#5DBE8C" stroke-width="3" stroke-linecap="round"/>` + leaf(x, y + 24, -35, '#5DBE8C');
+    for (let k = 0; k < 5; k++) {
+      const a = k * 72 * Math.PI / 180;
+      p += `<circle cx="${(x + 9 * Math.sin(a)).toFixed(1)}" cy="${(y - 9 * Math.cos(a)).toFixed(1)}" r="7.5" fill="${c}"/>`;
+    }
+    return p + `<circle cx="${x}" cy="${y}" r="5.5" fill="${c === '#FFC94A' ? '#FF8A7A' : '#FFC94A'}"/>`;
+  }
+  function starPath(cx, cy, R, r) {
+    let d = '';
+    for (let i = 0; i < 10; i++) {
+      const a = (i * 36 - 90) * Math.PI / 180, rr = i % 2 ? r : R;
+      d += (i ? 'L' : 'M') + (cx + rr * Math.cos(a)).toFixed(1) + ' ' + (cy + rr * Math.sin(a)).toFixed(1);
+    }
+    return d + 'Z';
+  }
+
+  const DECO = {
+    regenbogen() {
+      seed = 11;
+      const cols = ['#FF8A7A', '#FFC94A', '#6CCFB0', '#7FB8FF', '#B79CFF'];
+      let s = `<path d="M-10 6 Q397 26 804 6" fill="none" stroke="#CFC8E6" stroke-width="2"/>`;
+      for (let i = 0; i < 22; i++) {
+        const x = 12 + i * 36, t = (x + 10) / 814, y = 6 + 40 * t * (1 - t);
+        s += `<polygon points="${x - 12},${y - 1} ${x + 12},${y + 1} ${x},${y + 18}" fill="${cols[i % 5]}"/>`;
+      }
+      // Sonne
+      s += `<g transform="translate(768 58)">`;
+      for (let k = 0; k < 10; k++) s += `<rect x="-3" y="-50" width="6" height="14" rx="3" fill="#FFC94A" transform="rotate(${k * 36})"/>`;
+      s += `<circle r="28" fill="#FFD76A"/></g>`;
+      // Regenbogen im Kopf
+      [62, 52, 42, 32, 22].forEach((r, i) => {
+        s += `<path d="M${462 - r} 146 A${r} ${r} 0 0 1 ${462 + r} 146" fill="none" stroke="${cols[i]}" stroke-width="10"/>`;
+      });
+      s += cloud(388, 142, .75, '#EAF2FF') + cloud(500, 142, .75, '#EAF2FF');
+      // Konfetti am Rand
+      for (let i = 0; i < 26; i++) {
+        const left = i % 2 === 0;
+        const x = left ? 8 + rnd() * 24 : 762 + rnd() * 24;
+        const y = 380 + rnd() * 560;
+        s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.5 + rnd() * 3).toFixed(1)}" fill="${cols[i % 5]}" opacity=".75"/>`;
+      }
+      // Hügel & Blumen
+      s += cloud(110, 1000, 1, '#EAF2FF') + cloud(640, 985, .85, '#EAF2FF');
+      s += `<path d="M0 1030 Q 160 975 330 1020 T 660 1005 T 794 995 V1123 H0Z" fill="#DDF5EA"/>`;
+      s += `<path d="M0 1075 Q 220 1030 430 1070 T 794 1058 V1123 H0Z" fill="#B5E8D0"/>`;
+      [[70, 1060, '#FF8A7A'], [180, 1040, '#B79CFF'], [300, 1062, '#FFC94A'], [440, 1045, '#7FB8FF'], [560, 1066, '#FF8A7A'], [690, 1040, '#FFC94A'], [740, 1072, '#B79CFF']]
+        .forEach(([x, y, c]) => { s += flower(x, y, c); });
+      return svg(s);
+    },
+
+    tiere() {
+      seed = 5;
+      let s = '';
+      // Ast mit Eule
+      s += `<path d="M806 132 C 760 126, 700 130, 636 140" stroke="#8A5A3C" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+      s += leaf(650, 138, 150, '#7BBF6A') + leaf(676, 134, -150, '#5FA650') + leaf(760, 130, 160, '#7BBF6A') + leaf(784, 128, -140, '#5FA650');
+      s += owl(716, 92, .8);
+      // Blätter verstreut
+      for (let i = 0; i < 9; i++) {
+        s += leaf(12 + rnd() * 18, 420 + i * 58 + rnd() * 20, rnd() * 360, i % 2 ? '#A8D596' : '#7BBF6A');
+      }
+      // Wiese mit Fuchs und Bär
+      s += `<path d="M0 1038 Q 200 998 400 1028 T 794 1018 V1123 H0Z" fill="#A8D596"/>`;
+      s += fox(150, 1010, .92) + bear(640, 1016, .86);
+      s += `<path d="M0 1072 Q 200 1044 420 1070 T 794 1060 V1123 H0Z" fill="#7DBF69"/>`;
+      // Pilze & Gras
+      const shroom = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><rect x="-6" y="-4" width="12" height="20" rx="5" fill="#FFF6E8"/><path d="M-20 -2 Q0 -30 20 -2Z" fill="#E0533D"/><circle cx="-7" cy="-10" r="3" fill="#FFFFFF"/><circle cx="6" cy="-14" r="2.5" fill="#FFFFFF"/><circle cx="10" cy="-6" r="2" fill="#FFFFFF"/></g>`;
+      s += shroom(360, 1066, 1.2) + shroom(392, 1074, .85);
+      for (let x = 20; x < 794; x += 46 + Math.round(rnd() * 30)) {
+        s += `<path transform="translate(${x} ${1098 + rnd() * 10})" d="M0 0 L3 -12 L6 0 L9 -10 L12 0 L15 -13 L18 0Z" fill="#4E9A43"/>`;
+      }
+      return svg(s);
+    },
+
+    pixel() {
+      seed = 3;
+      const y0 = H - 44;
+      let s = '<g shape-rendering="crispEdges">';
+      s += sprite('cloud', 4, 452, 26) + sprite('cloud', 5, 96, 958) + sprite('cloud', 4, 560, 944);
+      s += `<rect x="0" y="${y0}" width="${W}" height="44" fill="#9B5E2C"/>`;
+      s += `<rect x="0" y="${y0}" width="${W}" height="14" fill="#4CB944"/><rect x="0" y="${y0 + 14}" width="${W}" height="4" fill="#2E8B37"/>`;
+      for (let x = 0; x < W; x += 12) if ((x / 12) % 2 === 0) s += `<rect x="${x}" y="${y0 - 4}" width="4" height="4" fill="#4CB944"/>`;
+      for (let i = 0; i < 44; i++) {
+        s += `<rect x="${Math.round(rnd() * 196) * 4}" y="${y0 + 22 + Math.round(rnd() * 4) * 4}" width="6" height="6" fill="#7A4520"/>`;
+      }
+      s += sprite('parent', 6, 70, y0 - 84) + sprite('kid', 6, 146, y0 - 60);
+      s += sprite('bush', 6, 250, y0 - 24) + sprite('bush', 5, 520, y0 - 20);
+      s += sprite('tree', 6, 660, y0 - 72);
+      s += sprite('coin', 4, 330, y0 - 70) + sprite('coin', 4, 372, y0 - 82) + sprite('coin', 4, 414, y0 - 70);
+      s += sprite('star', 4, 470, y0 - 96) + sprite('heart', 4, 596, y0 - 60);
+      return svg(s + '</g>');
+    },
+
+    modern() {
+      const blue = '#2D4BFF', coral = '#FF5A36';
+      let s = `<path d="M600 36 C 700 6, 806 66, 788 170 C 774 262, 806 332, 722 388 C 640 436, 556 394, 526 322 C 496 250, 516 188, 536 128 C 552 80, 558 52, 600 36Z" fill="#FFE1D8"/>`;
+      s += `<path d="${starPath(496, 70, 15, 6.5)}" fill="none" stroke="${coral}" stroke-width="3" stroke-linejoin="round" transform="rotate(8 496 70)"/>`;
+      s += `<path d="M470 110 l8 -6 M482 118 l10 -2" stroke="${coral}" stroke-width="3" stroke-linecap="round"/>`;
+      // Kritzeleien unten
+      const g = `fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"`;
+      s += `<g transform="translate(96 1034)" stroke="${blue}" ${g}><circle r="17"/>`;
+      for (let k = 0; k < 8; k++) s += `<path d="M0 -25 V-33" transform="rotate(${k * 45})"/>`;
+      s += `</g>`;
+      s += `<path transform="translate(222 1040) scale(1.5)" d="M0 8 C -18 -6, -10 -22, 0 -10 C 10 -22, 18 -6, 0 8Z" stroke="${coral}" ${g}/>`;
+      s += `<path transform="translate(344 1040)" d="M-22 18 V-4 L0 -22 L22 -4 V18 Z M-7 18 V4 H7 V18" stroke="${blue}" ${g}/>`;
+      s += `<g transform="translate(466 1038)" stroke="${coral}" ${g}><circle r="5"/>`;
+      for (let k = 0; k < 6; k++) s += `<ellipse cx="0" cy="-13" rx="6" ry="8" transform="rotate(${k * 60})"/>`;
+      s += `<path d="M0 22 V40"/></g>`;
+      s += `<path d="${starPath(588, 1038, 20, 8.5)}" stroke="${blue}" ${g} transform="rotate(-10 588 1038)"/>`;
+      s += `<g transform="translate(700 1038)" stroke="${blue}" ${g}><circle r="20"/><path d="M-7 -5 v1 M7 -5 v1 M-9 6 Q0 14 9 6"/></g>`;
+      let wave = 'M44 1094';
+      for (let x = 44; x < 750; x += 28) wave += ` q7 -9 14 0 t14 0`;
+      s += `<path d="${wave}" stroke="#FFD84D" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      return svg(s);
+    }
+  };
+
+  $('#stats').innerHTML =
+    `<span>${spriteSvg('heart', 3)}${spriteSvg('heart', 3)}${spriteSvg('heart', 3)}</span>` +
+    `<span>${spriteSvg('coin', 3)} ×12</span>` +
+    `<span>${spriteSvg('star', 3)} LEVEL: ELTERNBEIRAT</span>`;
+
+  /* ---------- Beispiel ---------- */
+  const dataSvg = s => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s);
+  const SAMPLE = {
+    f: {
+      kopf: 'Kita Sonnenschein · Elternbeirat 2026/27',
+      name: 'Julia Sommer',
+      kind: 'Emil (4) und Lotta (2)',
+      gruppe: 'Marienkäfer / U3',
+      kitaseit: 'September 2023',
+      ebseit: 'neu dabei',
+      ueber: 'Physiotherapeutin, Hobby-Bäckerin und textsicher bei allen Liedern aus dem Morgenkreis.',
+      bringe: 'Organisationstalent, zwei Hände fürs Sommerfest und einen Kombi für den Flohmarkt.',
+      schaetze: 'Mir gefällt, dass wir als Eltern mitgestalten können. Ich wünsche mir, dass Team und Eltern gut im Gespräch bleiben und der Weg zur Kita sicherer wird.',
+      kontakt: 'Einfach beim Abholen ansprechen oder über den Eltern-Chat der Marienkäfer.',
+      bildtext: 'Emils Lieblingstier'
+    },
+    img: {
+      foto: dataSvg(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 200 260"><rect width="200" height="260" fill="#DCE7F7"/><rect x="86" y="140" width="28" height="44" fill="#E8B892"/><path d="M18 260 Q24 182 100 178 Q176 182 182 260Z" fill="#5B7BD5"/><circle cx="100" cy="106" r="44" fill="#F0C7A2"/><path d="M52 124 Q44 52 100 50 Q156 52 148 124 Q144 84 100 78 Q60 84 52 124Z" fill="#6B4430"/><circle cx="84" cy="108" r="4" fill="#2B2118"/><circle cx="116" cy="108" r="4" fill="#2B2118"/><path d="M88 128 Q100 138 112 128" stroke="#2B2118" stroke-width="3" fill="none" stroke-linecap="round"/><text x="100" y="246" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#FFFFFF">Beispielfoto</text></svg>`),
+      bild: dataSvg(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="440" viewBox="-80 -80 200 220">${fox(0, 0, 1, true, true)}</svg>`)
+    }
+  };
+
+  /* ---------- Zustand ---------- */
+  let state = { design: 'regenbogen', f: {}, img: {} };
+  const store = {
+    load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } },
+    save() {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); return true; }
+      catch (e) { return false; }
+    }
+  };
+  let saveTimer, storageWarning = '';
+  function save() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      storageWarning = store.save() ? '' : 'Hinweis: Die Bilder sind zu groß zum Zwischenspeichern. Sie bleiben sichtbar, bis die Seite geschlossen wird.';
+      updateStatus();
+    }, 300);
+  }
+
+  /* ---------- Felder ---------- */
+  let plainOnly = true;
+  fields.forEach(el => {
+    try { el.contentEditable = 'plaintext-only'; } catch (e) { plainOnly = false; el.contentEditable = 'true'; }
+    if (el.contentEditable !== 'plaintext-only') { plainOnly = false; el.contentEditable = 'true'; }
+    el.setAttribute('role', 'textbox');
+    el.spellcheck = true;
+    if (el.classList.contains('multi')) el.setAttribute('aria-multiline', 'true');
+  });
+
+  function readField(el) { return el.innerText.replace(/ /g, ' ').replace(/\n+$/, ''); }
+  function checkFull(el) {
+    const full = el.classList.contains('multi')
+      ? el.scrollHeight > el.clientHeight + 2
+      : el.scrollWidth > el.clientWidth + 2;
+    el.classList.toggle('voll', full);
+  }
+  function updateStatus() {
+    const n = $$('.ed.voll').length;
+    const msgs = [];
+    if (n) msgs.push(n === 1
+      ? 'Ein Feld ist zu voll (rot markiert). Bitte kürzen, sonst wird der Text beim Drucken abgeschnitten.'
+      : `${n} Felder sind zu voll (rot markiert). Bitte kürzen, sonst wird der Text beim Drucken abgeschnitten.`);
+    if (storageWarning) msgs.push(storageWarning);
+    statusEl.textContent = msgs.join(' ');
+  }
+  const checkAll = () => { fields.forEach(checkFull); updateStatus(); };
+
+  fields.forEach(el => {
+    el.addEventListener('input', () => {
+      if (!el.textContent.trim()) el.textContent = '';
+      state.f[el.dataset.f] = readField(el);
+      el.classList.remove('fehlt');
+      checkFull(el);
+      updateStatus();
+      updatePflicht();
+      save();
+    });
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && el.classList.contains('single')) e.preventDefault();
+    });
+    el.addEventListener('paste', e => {
+      const text = e.clipboardData && e.clipboardData.getData('text/plain');
+      if (!text) return;
+      if (!plainOnly || el.classList.contains('single')) {
+        e.preventDefault();
+        const clean = el.classList.contains('single') ? text.replace(/\s*\n\s*/g, ' ') : text;
+        document.execCommand('insertText', false, clean);
+      }
+    });
+  });
+
+  function renderFields() {
+    fields.forEach(el => { el.textContent = state.f[el.dataset.f] || ''; el.classList.remove('fehlt'); });
+    checkAll();
+    updatePflicht();
+  }
+
+  /* ---------- Bilder ---------- */
+  function renderImg(key) {
+    const btn = $('#btn-' + key), pic = $('#pic-' + key), weg = $('#weg-' + key);
+    const url = state.img[key];
+    pic.style.backgroundImage = url ? `url("${url}")` : '';
+    if (url) {
+      pic.setAttribute('role', 'img');
+      pic.setAttribute('aria-label', key === 'foto' ? 'Foto' : 'Bild');
+    } else {
+      pic.removeAttribute('role');
+      pic.removeAttribute('aria-label');
+    }
+    btn.classList.toggle('has', !!url);
+    weg.hidden = !url;
+  }
+  function setImg(key, url) { state.img[key] = url || null; renderImg(key); save(); }
+
+  async function fileToUrl(file) {
+    const src = URL.createObjectURL(file);
+    try {
+      const img = new Image();
+      await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = src; });
+      const w = img.naturalWidth || 800, h = img.naturalHeight || 800;
+      const k = Math.min(1, 1200 / Math.max(w, h));
+      const c = document.createElement('canvas');
+      c.width = Math.round(w * k); c.height = Math.round(h * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      let url = c.toDataURL('image/webp', .9);
+      if (!url.startsWith('data:image/webp')) url = c.toDataURL(file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png', .9);
+      return url;
+    } finally { URL.revokeObjectURL(src); }
+  }
+  async function takeFile(key, file) {
+    if (!file || !file.type.startsWith('image/')) {
+      statusEl.textContent = 'Das ist keine Bilddatei. Bitte ein Foto oder Bild (JPG, PNG, …) wählen.';
+      return;
+    }
+    try { setImg(key, await fileToUrl(file)); }
+    catch (e) { statusEl.textContent = 'Das Bild konnte nicht gelesen werden. Bitte ein anderes Bild versuchen.'; }
+  }
+
+  $$('.slot-btn').forEach(btn => {
+    const key = btn.dataset.slot, input = $('#file-' + key);
+    btn.addEventListener('click', () => input.click());
+    input.addEventListener('change', () => { if (input.files[0]) takeFile(key, input.files[0]); input.value = ''; });
+    btn.addEventListener('dragover', e => { e.preventDefault(); btn.classList.add('drag'); });
+    btn.addEventListener('dragleave', () => btn.classList.remove('drag'));
+    btn.addEventListener('drop', e => {
+      e.preventDefault(); btn.classList.remove('drag');
+      const f = e.dataTransfer.files[0];
+      if (f) takeFile(key, f);
+    });
+  });
+  $$('.slot-weg').forEach(b => b.addEventListener('click', () => {
+    setImg(b.dataset.slot, null);
+    $('#btn-' + b.dataset.slot).focus();
+  }));
+  document.addEventListener('paste', e => {
+    const a = document.activeElement;
+    if (a && a.classList && a.classList.contains('ed')) return;
+    const item = [...(e.clipboardData ? e.clipboardData.items : [])].find(i => i.type.startsWith('image/'));
+    if (!item) return;
+    e.preventDefault();
+    const key = a && a.dataset && a.dataset.slot ? a.dataset.slot : 'bild';
+    takeFile(key, item.getAsFile());
+  });
+
+  /* ---------- Design ---------- */
+  function setDesign(d, keepHash) {
+    if (!DESIGNS.includes(d)) d = 'regenbogen';
+    state.design = d;
+    DESIGNS.forEach(x => sheet.classList.toggle('d-' + x, x === d));
+    $$('.chip').forEach(c => c.setAttribute('aria-pressed', String(c.dataset.design === d)));
+    renderLabels(d);
+    deco.innerHTML = DECO[d]();
+    if (!keepHash) { try { history.replaceState(null, '', '#' + d); } catch (e) { /* egal */ } }
+    requestAnimationFrame(checkAll);
+    save();
+  }
+  $$('.chip').forEach(c => c.addEventListener('click', () => setDesign(c.dataset.design)));
+
+  /* ---------- Knöpfe mit Bestätigung ---------- */
+  function confirmButton(btn, label, confirmLabel, needsConfirm, action) {
+    let timer;
+    btn.addEventListener('click', () => {
+      if (!needsConfirm() || btn.classList.contains('confirm')) {
+        clearTimeout(timer);
+        btn.classList.remove('confirm');
+        btn.textContent = label;
+        action();
+        return;
+      }
+      btn.classList.add('confirm');
+      btn.textContent = confirmLabel;
+      timer = setTimeout(() => { btn.classList.remove('confirm'); btn.textContent = label; }, 4000);
+    });
+  }
+  const hasContent = () => Object.values(state.f).some(v => v && v.trim()) || Object.values(state.img).some(Boolean);
+  const sameAsSample = () => Object.keys(SAMPLE.f).every(k => state.f[k] === SAMPLE.f[k]);
+
+  function loadSample() {
+    state.f = { ...SAMPLE.f };
+    state.img = { ...SAMPLE.img };
+    renderFields(); renderImg('foto'); renderImg('bild'); save();
+  }
+  confirmButton($('#btn-beispiel'), 'Beispiel anzeigen', 'Eigene Eingaben ersetzen?', () => hasContent() && !sameAsSample(), loadSample);
+  confirmButton($('#btn-leeren'), 'Alles leeren', 'Wirklich alles leeren?', hasContent, () => {
+    state.f = {}; state.img = {};
+    renderFields(); renderImg('foto'); renderImg('bild'); save();
+  });
+
+  /* ---------- Drucken ---------- */
+  let framed = true;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  if (framed) {
+    $('#btn-drucken').hidden = true;
+    $('#hint').textContent += ' Zum Drucken die Datei „Steckbrief.html“ im Browser öffnen.';
+    $('#abs-hinweis').textContent += ' In dieser Vorschau funktionieren PDF-Download und E-Mail nicht, auf der veröffentlichten Seite schon.';
+  } else {
+    $('#btn-drucken').addEventListener('click', () => window.print());
+  }
+
+  /* ---------- Abschicken: PDF & E-Mail ---------- */
+  const btnPdf = $('#btn-pdf'), btnMail = $('#btn-mail'), pflichtEl = $('#pflicht-status');
+  const fieldEl = key => $('.ed[data-f="' + key + '"]');
+  const labelText = key => LABELS.base[key].replace('|', ' ');
+  const wert = key => (state.f[key] || '').trim();
+  const fehlend = () => PFLICHT.filter(k => fieldEl(k) && !wert(k));
+
+  PFLICHT.forEach(k => {
+    const el = fieldEl(k);
+    if (!el) return;
+    el.setAttribute('aria-required', 'true');
+    const lab = document.getElementById(el.getAttribute('aria-labelledby'));
+    if (lab) lab.classList.add('pflicht');
+  });
+
+  function dateiname() {
+    const n = wert('name')
+      .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
+      .replace(/Ä/g, 'Ae').replace(/Ö/g, 'Oe').replace(/Ü/g, 'Ue').replace(/ß/g, 'ss')
+      .replace(/[^A-Za-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return 'Steckbrief-' + (n || 'Elternbeirat') + '.pdf';
+  }
+
+  function mailHref() {
+    const z = ['Hallo,', '', 'anbei mein Steckbrief für die Wahl zum Elternbeirat.', ''];
+    ['name', 'kind', 'gruppe', 'kitaseit', 'ebseit'].forEach(k => { if (wert(k)) z.push(labelText(k) + ': ' + wert(k)); });
+    ['ueber', 'bringe', 'schaetze', 'kontakt'].forEach(k => { if (wert(k)) z.push('', labelText(k) + ':', wert(k)); });
+    z.push('', `Den Steckbrief als PDF („${dateiname()}“) findet ihr im Anhang.`, '', 'Viele Grüße', wert('name'));
+    const betreff = 'Steckbrief Elternbeirat' + (wert('name') ? ' – ' + wert('name') : '');
+    return 'mailto:' + encodeURIComponent(MAIL_AN).replace(/%40/g, '@') +
+      '?subject=' + encodeURIComponent(betreff) +
+      '&body=' + encodeURIComponent(z.join('\r\n'));
+  }
+
+  function updatePflicht() {
+    const fehlt = fehlend(), ok = !fehlt.length;
+    pflichtEl.textContent = ok
+      ? 'Alle Pflichtfelder sind ausgefüllt.'
+      : 'Noch auszufüllen: ' + fehlt.map(labelText).join(', ') + '.';
+    pflichtEl.classList.toggle('ok', ok);
+    btnPdf.setAttribute('aria-disabled', String(!ok));
+    btnMail.setAttribute('aria-disabled', String(!ok));
+    btnMail.href = ok ? mailHref() : '#';
+  }
+
+  function zeigeFehlende() {
+    const fehlt = fehlend();
+    if (!fehlt.length) return;
+    fehlt.forEach(k => fieldEl(k).classList.add('fehlt'));
+    const first = fieldEl(fehlt[0]);
+    const ruhig = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    first.scrollIntoView({ behavior: ruhig ? 'auto' : 'smooth', block: 'center' });
+    first.focus({ preventScroll: true });
+  }
+
+  btnMail.addEventListener('click', e => {
+    if (btnMail.getAttribute('aria-disabled') === 'true') { e.preventDefault(); zeigeFehlende(); }
+  });
+
+  let pdfBusy = false;
+  btnPdf.addEventListener('click', async () => {
+    if (btnPdf.getAttribute('aria-disabled') === 'true') { zeigeFehlende(); return; }
+    if (pdfBusy) return;
+    const fehler = text => { pflichtEl.textContent = text; pflichtEl.classList.remove('ok'); };
+    if (!window.html2canvas || !window.jspdf) {
+      fehler('Das PDF-Werkzeug konnte nicht geladen werden (keine Internetverbindung?). Alternativ oben „Drucken“ wählen und dort „Als PDF speichern“.');
+      return;
+    }
+    pdfBusy = true;
+    btnPdf.classList.add('busy');
+    btnPdf.textContent = 'PDF wird erstellt …';
+    try {
+      if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      sheet.classList.add('export');
+      const canvas = await html2canvas(sheet, {
+        scale: 2,
+        backgroundColor: '#FFFFFF',
+        logging: false,
+        windowWidth: 1200,
+        windowHeight: 1600,
+        onclone: doc => {
+          const s = doc.getElementById('sheet');
+          s.style.transform = 'none';
+        }
+      });
+      const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
+      pdf.setProperties({ title: 'Steckbrief Elternbeirat' + (wert('name') ? ' – ' + wert('name') : '') });
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 210, 297);
+      pdf.save(dateiname());
+      pflichtEl.textContent = `„${dateiname()}“ ist heruntergeladen. Jetzt Schritt 2: E-Mail öffnen und die Datei anhängen.`;
+      pflichtEl.classList.add('ok');
+    } catch (e) {
+      fehler('Das PDF konnte nicht erstellt werden. Alternativ oben „Drucken“ wählen und dort „Als PDF speichern“.');
+    } finally {
+      sheet.classList.remove('export');
+      pdfBusy = false;
+      btnPdf.classList.remove('busy');
+      btnPdf.textContent = 'PDF herunterladen';
+    }
+  });
+
+  if (MAIL_AN) {
+    $('#mail-adresse').textContent = MAIL_AN;
+    $('#empfaenger').hidden = false;
+    const kopieren = $('#btn-kopieren');
+    kopieren.addEventListener('click', () => {
+      const markieren = () => {
+        const r = document.createRange();
+        r.selectNodeContents($('#mail-adresse'));
+        const sel = getSelection();
+        sel.removeAllRanges();
+        sel.addRange(r);
+      };
+      try {
+        navigator.clipboard.writeText(MAIL_AN).then(() => {
+          kopieren.textContent = 'Kopiert';
+          setTimeout(() => { kopieren.textContent = 'Adresse kopieren'; }, 2000);
+        }, markieren);
+      } catch (e) { markieren(); }
+    });
+  }
+
+  /* ---------- Einpassen auf kleine Bildschirme ---------- */
+  function fit() {
+    const s = Math.min(1, stage.clientWidth / W);
+    sheet.style.transform = s < 1 ? `scale(${s})` : '';
+    wrap.style.height = (H * s) + 'px';
+  }
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener('resize', fit);
+
+  /* ---------- Start ---------- */
+  const saved = store.load();
+  if (saved && typeof saved === 'object') {
+    state.design = saved.design || state.design;
+    state.f = saved.f || {};
+    state.img = saved.img || {};
+  }
+  const tokens = location.hash.slice(1).toLowerCase().split('-');
+  const hashDesign = tokens.find(t => DESIGNS.includes(t));
+  if (tokens.includes('beispiel')) { state.f = { ...SAMPLE.f }; state.img = { ...SAMPLE.img }; }
+
+  renderFields();
+  renderImg('foto'); renderImg('bild');
+  setDesign(hashDesign || state.design, tokens.includes('beispiel') && framed);
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkAll);
+})();
+</script>
+</body>
+</html>
