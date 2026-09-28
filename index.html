@@ -6,7 +6,7 @@
 <title>Elternbeirat-Steckbrief</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&family=Fredoka:wght@500;600&family=Grandstander:wght@600;800&family=Nunito:wght@400;600;700&family=Pixelify+Sans:wght@400;600&family=Press+Start+2P&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700&family=Fredoka:wght@500;600&family=Grandstander:wght@600;800&family=Nunito:wght@400;600;700&family=Pixelify+Sans:wght@400;600&family=Press+Start+2P&family=Quicksand:wght@500;600;700&display=swap">
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   [hidden] { display: none !important; }
@@ -138,8 +138,7 @@
       "kopf kopf foto"
       "basis basis foto"
       "schaetze schaetze bild"
-      "ueber bringe bild"
-      "kontakt kontakt kontakt";
+      "ueber bringe bild";
     gap: 16px;
     align-content: start;
     -webkit-print-color-adjust: exact;
@@ -159,7 +158,6 @@
   #box-ueber { grid-area: ueber; }
   #box-bringe { grid-area: bringe; }
   #box-schaetze { grid-area: schaetze; }
-  #box-kontakt { grid-area: kontakt; }
   .box { display: flex; flex-direction: column; gap: 6px; }
   .lab { margin: 0; font-family: var(--f-label); font-weight: 700; font-size: 16px; line-height: 1.25; }
   .lab small { font-weight: 500; font-size: .8em; opacity: .85; margin-left: .3em; }
@@ -173,9 +171,8 @@
     background-image: linear-gradient(to top, var(--line) 1.5px, transparent 1.5px);
     background-size: 100% var(--lh);
   }
-  #f-ueber, #f-bringe { --rows: 5; }
-  #f-schaetze { --rows: 4; }
-  #f-kontakt { --rows: 2; }
+  #f-ueber, #f-bringe { --rows: 7; }
+  #f-schaetze { --rows: 6; }
   .ed[data-f="name"] { font-weight: 700; font-size: 19px; }
   .ed:empty::before { content: attr(data-ph); color: var(--ph); font-weight: 400; font-size: 15px; pointer-events: none; }
   .ed:focus { box-shadow: 0 0 0 2px var(--focus); }
@@ -241,7 +238,6 @@
   .d-regenbogen #box-ueber { background: #FFF1D6; } .d-regenbogen #box-ueber .lab { color: #A86A10; }
   .d-regenbogen #box-bringe { background: #DDF5EA; } .d-regenbogen #box-bringe .lab { color: #1C7E5A; }
   .d-regenbogen #box-schaetze { background: #ECE6FF; } .d-regenbogen #box-schaetze .lab { color: #6346C9; }
-  .d-regenbogen #box-kontakt { background: #E1EEFF; } .d-regenbogen #box-kontakt .lab { color: #2A64C0; }
   .d-regenbogen .slot-titel { color: #E0604C; }
   .d-regenbogen .bild .slot-btn { --slot-border: 3px dashed #9FC7FF; --slot-bg: #F1F7FF; }
   .d-regenbogen .bild .slot-titel { color: #2A64C0; }
@@ -258,21 +254,17 @@
       "foto kopf kopf"
       "foto basis basis"
       "bild schaetze schaetze"
-      "bild ueber bringe"
-      "kontakt kontakt kontakt";
+      "bild ueber bringe";
   }
   .d-tiere .titel { font-size: 58px; font-weight: 800; color: #2E6B4F; }
   .d-tiere .eyebrow { font-family: var(--f-display); font-weight: 600; color: #C75D26; }
   .d-tiere .basis .lab { font-size: 15px; color: #8A5A3C; }
   .d-tiere .box { background: #FFFFFF; border: 2px solid #2E6B4F; border-radius: 20px 20px 20px 6px; padding: 12px 16px 14px; }
-  .d-tiere #box-kontakt { background: #FFF3E6; border-color: #E8743B; }
   .d-tiere .box .lab { color: #2E6B4F; font-size: 16px; font-weight: 800; }
-  .d-tiere #box-kontakt .lab { color: #B8531F; }
   .d-tiere .box .lab::before {
     content: ""; display: inline-block; width: 13px; height: 13px; margin-right: 8px;
     background: #7BBF6A; border-radius: 0 70% 0 70%; vertical-align: -1px;
   }
-  .d-tiere #box-kontakt .lab::before { background: #E8743B; }
   .d-tiere .foto .slot-btn { border-width: 4px; border-radius: 107px 107px 18px 18px; }
   .d-tiere .bild .slot-btn { --slot-border: 3px solid #E8743B; }
   .d-tiere .slot-titel { color: #2E6B4F; }
@@ -300,7 +292,6 @@
   .d-pixel #box-ueber { --tab: #D93654; }
   .d-pixel #box-bringe { --tab: #23884A; }
   .d-pixel #box-schaetze { --tab: #6245D1; }
-  .d-pixel #box-kontakt { --tab: #1D6FCC; }
 
   .d-pixel .slot-btn { border: var(--frame); }
   .d-pixel .slot-titel { font-size: 11px; line-height: 1.5; }
@@ -318,12 +309,10 @@
       "kopf kopf foto"
       "basis basis foto"
       "schaetze schaetze schaetze"
-      "ueber bringe bild"
-      "kontakt kontakt bild";
+      "ueber bringe bild";
   }
-  .d-modern #f-ueber, .d-modern #f-bringe { --rows: 6; }
+  .d-modern #f-ueber, .d-modern #f-bringe { --rows: 8; }
   .d-modern #f-schaetze { --rows: 5; }
-  .d-modern #f-kontakt { --rows: 3; }
   .d-modern .titel { font-size: 44px; font-weight: 800; letter-spacing: -.025em; }
   .d-modern .titel mark { color: inherit; background: linear-gradient(transparent 58%, #FFD84D 58%, #FFD84D 92%, transparent 92%); padding: 0 .06em; }
   .d-modern .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 700; color: #2D4BFF; }
@@ -345,6 +334,26 @@
   }
   .d-modern .slot-titel { color: #2D4BFF; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; }
   .d-modern .ed.cap { font-family: "Bricolage Grotesque", system-ui, sans-serif; }
+
+  /* ---------- Design 5: Einhorn-Glitzer ---------- */
+  .d-einhorn {
+    --paper: #FFF3F8; --ink: #4A2E4F; --line: #F3C9E2; --ph: #C79BB8; --focus: #FF8FC7; --lh: 28px;
+    --f-display: "Caveat", "Segoe UI", system-ui, sans-serif;
+    --f-body: "Quicksand", "Segoe UI", system-ui, sans-serif;
+    --f-label: "Quicksand", var(--f-body);
+    --slot-bg: #FFFFFF; --slot-border: 3px dashed #FF8FC7; --slot-radius: 40% 60% 55% 45% / 55% 45% 60% 40%;
+  }
+  .d-einhorn .titel { font-size: 68px; font-weight: 700; color: #D6428E; }
+  .d-einhorn .eyebrow { font-weight: 600; color: #8A5AA8; }
+  .d-einhorn .basis .lab { font-size: 15px; font-weight: 600; color: #8A5AA8; }
+  .d-einhorn .box { border-radius: 24px; padding: 12px 16px 14px; --line: rgba(74, 46, 79, .16); }
+  .d-einhorn .box .lab { font-family: "Quicksand", sans-serif; font-size: 17px; font-weight: 700; }
+  .d-einhorn #box-ueber { background: #FFE3F0; } .d-einhorn #box-ueber .lab { color: #C13584; }
+  .d-einhorn #box-bringe { background: #EDE3FF; } .d-einhorn #box-bringe .lab { color: #7A4FC9; }
+  .d-einhorn #box-schaetze { background: #E1F6FF; } .d-einhorn #box-schaetze .lab { color: #1D86B0; }
+  .d-einhorn .slot-titel { color: #D6428E; }
+  .d-einhorn .bild .slot-btn { --slot-border: 3px dashed #C9A6FF; --slot-bg: #F7F1FF; }
+  .d-einhorn .bild .slot-titel { color: #7A4FC9; }
 
   /* ---------- Abschicken ---------- */
   .abschluss {
@@ -423,6 +432,7 @@
       <button class="btn" id="btn-beispiel" type="button">Beispiel anzeigen</button>
       <button class="btn" id="btn-leeren" type="button">Alles leeren</button>
       <button class="btn" id="btn-drucken" type="button">Drucken</button>
+      <button class="btn" id="btn-vorlage" type="button">Als PDF-Vorlage herunterladen</button>
     </div>
   </div>
   <div class="designs" role="group" aria-label="Design wählen">
@@ -430,6 +440,7 @@
     <button class="chip" type="button" id="d-tiere" data-design="tiere" aria-pressed="false"><span class="sw"><i style="background:#2E6B4F"></i><i style="background:#E8743B"></i><i style="background:#8A5A3C"></i></span>Tierfreunde</button>
     <button class="chip" type="button" id="d-pixel" data-design="pixel" aria-pressed="false"><span class="sw"><i style="background:#4CB944"></i><i style="background:#F7C52B"></i><i style="background:#E83F5B"></i></span>Pixel-Profil</button>
     <button class="chip" type="button" id="d-modern" data-design="modern" aria-pressed="false"><span class="sw"><i style="background:#14213D"></i><i style="background:#2D4BFF"></i><i style="background:#FFD84D"></i></span>Klar &amp; modern</button>
+    <button class="chip" type="button" id="d-einhorn" data-design="einhorn" aria-pressed="false"><span class="sw"><i style="background:#FF8FC7"></i><i style="background:#C9A6FF"></i><i style="background:#F7C52B"></i></span>Einhorn-Glitzer</button>
   </div>
   <p class="hint" id="hint">In ein Feld klicken und losschreiben. Bilder: Rahmen anklicken, ein Bild hineinziehen oder mit Strg+V einfügen. Eingaben werden nur in diesem Browser zwischengespeichert.</p>
   <p class="hint status" id="status" role="status" aria-live="polite"></p>
@@ -500,11 +511,6 @@
         <input type="file" accept="image/*" id="file-bild" data-slot="bild" hidden>
         <div class="ed single cap" id="f-bildtext" data-f="bildtext" aria-label="Bildunterschrift" data-ph="Bildunterschrift"></div>
       </div>
-
-      <section class="box" id="box-kontakt">
-        <h2 class="lab" id="l-kontakt" data-t="kontakt">So erreicht ihr mich</h2>
-        <div class="ed multi" id="f-kontakt" data-f="kontakt" aria-labelledby="l-kontakt" data-ph="z. B. beim Abholen ansprechen, per E-Mail oder im Eltern-Chat"></div>
-      </section>
     </article>
   </div>
 </main>
@@ -543,13 +549,13 @@
    MAIL_AN:  E-Mail-Adresse, an die die Steckbriefe gehen sollen.
              Leer lassen (''), dann trägt jede*r die Adresse selbst ein.
    PFLICHT:  Felder, die ausgefüllt sein müssen, bevor PDF und E-Mail freigeschaltet werden.
-             Mögliche Werte: kopf, name, kind, gruppe, kitaseit, ebseit, ueber, bringe, schaetze, kontakt, bildtext
+             Mögliche Werte: kopf, name, kind, gruppe, kitaseit, ebseit, ueber, bringe, schaetze, bildtext
    ================================================== */
 const MAIL_AN = '';
 const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
 
 (() => {
-  const DESIGNS = ['regenbogen', 'tiere', 'pixel', 'modern'];
+  const DESIGNS = ['regenbogen', 'tiere', 'pixel', 'modern', 'einhorn'];
   const KEY = 'elternbeirat-steckbrief-v1';
   const W = 794, H = 1123;
   const $ = (s, r = document) => r.querySelector(s);
@@ -566,16 +572,17 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       kitaseit: 'In der Kita seit', ebseit: 'Im Elternbeirat seit',
       ueber: 'Über mich', bringe: 'Das bringe ich mit',
       schaetze: 'Das schätze ich & das erhoffe ich mir',
-      kontakt: 'So erreicht ihr mich', foto: 'Foto', bild: 'Mein Bild'
+      foto: 'Foto', bild: 'Mein Bild'
     },
     tiere: { titel: 'Steckbrief', bild: 'Unser Lieblingsbild' },
     pixel: {
       titel: 'Spieler-Profil', name: 'Spielername',
       ueber: 'Über mich|mit Fun Fact', bringe: 'Skills|das bringe ich mit',
       schaetze: 'Meine Quest|das schätze ich & das erhoffe ich mir',
-      kontakt: 'Multiplayer|so erreicht ihr mich', foto: 'Spieler 1', bild: 'Lieblingsfigur'
+      foto: 'Spieler 1', bild: 'Lieblingsfigur'
     },
-    modern: { titel: 'Hallo, ich stelle mich *vor.*' }
+    modern: { titel: 'Hallo, ich stelle mich *vor.*' },
+    einhorn: { titel: 'Steckbrief', bild: 'Mein Glitzerbild' }
   };
   const RAINBOW = ['#F0604D', '#E39A00', '#23A57B', '#3C7FE6', '#8A63E8'];
 
@@ -689,6 +696,23 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       <polygon points="-4,-5 4,-5 0,5" fill="${Or}"/>
       <ellipse cx="-10" cy="39" rx="6" ry="3" fill="${Or}"/><ellipse cx="10" cy="39" rx="6" ry="3" fill="${Or}"/></g>`;
   }
+  function unicorn(x, y, s) {
+    const B = '#FFFFFF', Ho = '#FFE3F0', M1 = '#FF8FC7', M2 = '#C9A6FF', M3 = '#8FD9FF', H = '#F7C52B', D = '#4A2E4F';
+    return `<g transform="translate(${x} ${y}) scale(${s})">
+      <rect x="-38" y="112" width="9" height="24" rx="3.5" fill="${B}"/><rect x="-16" y="112" width="9" height="24" rx="3.5" fill="${B}"/>
+      <rect x="10" y="112" width="9" height="24" rx="3.5" fill="${B}"/><rect x="30" y="112" width="9" height="24" rx="3.5" fill="${B}"/>
+      <ellipse cx="0" cy="86" rx="52" ry="42" fill="${B}"/><ellipse cx="4" cy="96" rx="30" ry="26" fill="${Ho}"/>
+      <path d="M-38 58 Q-60 16 -44 -14 Q-30 8 -34 44Z" fill="${M1}"/>
+      <path d="M-28 48 Q-48 10 -32 -18 Q-18 6 -22 40Z" fill="${M2}"/>
+      <path d="M-16 44 Q-34 8 -20 -20 Q-6 4 -10 36Z" fill="${M3}"/>
+      <path d="M40 26 Q66 30 74 52 Q56 46 44 40Z" fill="${M2}"/>
+      <ellipse cx="-2" cy="-8" rx="32" ry="28" fill="${B}"/>
+      <polygon points="12,-44 20,-6 2,-10" fill="${H}"/>
+      <circle cx="-14" cy="-10" r="3.6" fill="${D}"/>
+      <path d="M-22 4 Q-13 11 -4 4" stroke="${D}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="-8" cy="18" rx="7" ry="4" fill="${M1}" opacity=".6"/></g>`;
+  }
+  const sparkle = (x, y, s, c) => `<g transform="translate(${x} ${y}) scale(${s})" fill="${c}"><path d="M0 -16 Q3.5 -3.5 16 0 Q3.5 3.5 0 16 Q-3.5 3.5 -16 0 Q-3.5 -3.5 0 -16Z"/></g>`;
   const leaf = (x, y, rot, c) => `<path transform="translate(${x} ${y}) rotate(${rot})" d="M0 0 Q9 -9 20 0 Q9 9 0 0Z" fill="${c}"/>`;
   const cloud = (x, y, s, c) => `<g transform="translate(${x} ${y}) scale(${s})" fill="${c}"><circle cx="0" cy="0" r="18"/><circle cx="22" cy="-10" r="23"/><circle cx="46" cy="0" r="17"/><rect x="0" y="0" width="46" height="18"/></g>`;
   function flower(x, y, c) {
@@ -806,6 +830,30 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       for (let x = 44; x < 750; x += 28) wave += ` q7 -9 14 0 t14 0`;
       s += `<path d="${wave}" stroke="#FFD84D" stroke-width="5" fill="none" stroke-linecap="round"/>`;
       return svg(s);
+    },
+
+    einhorn() {
+      seed = 7;
+      const pink = '#FF8FC7', lav = '#C9A6FF', mint = '#8FD9FF', gold = '#F7C52B';
+      let s = '';
+      [[60, 50, pink], [730, 80, lav], [680, 40, gold], [40, 140, mint], [760, 150, pink]]
+        .forEach(([x, y, c]) => { s += sparkle(x, y, 1.1, c); });
+      [46, 36, 26].forEach((r, i) => {
+        s += `<path d="M${470 - r} 150 A${r} ${r} 0 0 1 ${470 + r} 150" fill="none" stroke="${[pink, gold, mint][i]}" stroke-width="9"/>`;
+      });
+      s += cloud(388, 148, .7, '#FFF6FB') + cloud(520, 146, .6, '#FFF6FB');
+      for (let i = 0; i < 20; i++) {
+        const left = i % 2 === 0;
+        const x = left ? 8 + rnd() * 22 : 764 + rnd() * 22;
+        const y = 360 + rnd() * 580;
+        s += sparkle(x, y, .35 + rnd() * .4, [pink, lav, mint, gold][i % 4]);
+      }
+      s += `<path d="M0 1030 Q 160 985 330 1020 T 660 1002 T 794 992 V1123 H0Z" fill="#FFE7F2"/>`;
+      s += `<path d="M0 1074 Q 220 1034 430 1068 T 794 1054 V1123 H0Z" fill="#FFD0E8"/>`;
+      s += unicorn(170, 972, .82);
+      [[70, 1060, pink], [300, 1050, gold], [440, 1064, lav], [600, 1046, mint], [700, 1068, pink]]
+        .forEach(([x, y, c]) => { s += flower(x, y, c); });
+      return svg(s);
     }
   };
 
@@ -827,7 +875,6 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       ueber: 'Physiotherapeutin, Hobby-Bäckerin und textsicher bei allen Liedern aus dem Morgenkreis.',
       bringe: 'Organisationstalent, zwei Hände fürs Sommerfest und einen Kombi für den Flohmarkt.',
       schaetze: 'Mir gefällt, dass wir als Eltern mitgestalten können. Ich wünsche mir, dass Team und Eltern gut im Gespräch bleiben und der Weg zur Kita sicherer wird.',
-      kontakt: 'Einfach beim Abholen ansprechen oder über den Eltern-Chat der Marienkäfer.',
       bildtext: 'Emils Lieblingstier'
     },
     img: {
@@ -1060,7 +1107,7 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
   function mailHref() {
     const z = ['Hallo,', '', 'anbei mein Steckbrief für die Wahl zum Elternbeirat.', ''];
     ['name', 'kind', 'gruppe', 'kitaseit', 'ebseit'].forEach(k => { if (wert(k)) z.push(labelText(k) + ': ' + wert(k)); });
-    ['ueber', 'bringe', 'schaetze', 'kontakt'].forEach(k => { if (wert(k)) z.push('', labelText(k) + ':', wert(k)); });
+    ['ueber', 'bringe', 'schaetze'].forEach(k => { if (wert(k)) z.push('', labelText(k) + ':', wert(k)); });
     z.push('', `Den Steckbrief als PDF („${dateiname()}“) findet ihr im Anhang.`, '', 'Viele Grüße', wert('name'));
     const betreff = 'Steckbrief Elternbeirat' + (wert('name') ? ' – ' + wert('name') : '');
     return 'mailto:' + encodeURIComponent(MAIL_AN).replace(/%40/g, '@') +
@@ -1093,6 +1140,31 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
     if (btnMail.getAttribute('aria-disabled') === 'true') { e.preventDefault(); zeigeFehlende(); }
   });
 
+  async function renderPdf(titel, name) {
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    sheet.classList.add('export');
+    try {
+      const canvas = await html2canvas(sheet, {
+        scale: 2,
+        backgroundColor: '#FFFFFF',
+        logging: false,
+        windowWidth: 1200,
+        windowHeight: 1600,
+        onclone: doc => {
+          const s = doc.getElementById('sheet');
+          s.style.transform = 'none';
+        }
+      });
+      const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
+      pdf.setProperties({ title: titel });
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 210, 297);
+      pdf.save(name);
+    } finally {
+      sheet.classList.remove('export');
+    }
+  }
+
   let pdfBusy = false;
   btnPdf.addEventListener('click', async () => {
     if (btnPdf.getAttribute('aria-disabled') === 'true') { zeigeFehlende(); return; }
@@ -1106,33 +1178,48 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
     btnPdf.classList.add('busy');
     btnPdf.textContent = 'PDF wird erstellt …';
     try {
-      if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
-      if (document.fonts && document.fonts.ready) await document.fonts.ready;
-      sheet.classList.add('export');
-      const canvas = await html2canvas(sheet, {
-        scale: 2,
-        backgroundColor: '#FFFFFF',
-        logging: false,
-        windowWidth: 1200,
-        windowHeight: 1600,
-        onclone: doc => {
-          const s = doc.getElementById('sheet');
-          s.style.transform = 'none';
-        }
-      });
-      const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
-      pdf.setProperties({ title: 'Steckbrief Elternbeirat' + (wert('name') ? ' – ' + wert('name') : '') });
-      pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 210, 297);
-      pdf.save(dateiname());
+      await renderPdf('Steckbrief Elternbeirat' + (wert('name') ? ' – ' + wert('name') : ''), dateiname());
       pflichtEl.textContent = `„${dateiname()}“ ist heruntergeladen. Jetzt Schritt 2: E-Mail öffnen und die Datei anhängen.`;
       pflichtEl.classList.add('ok');
     } catch (e) {
       fehler('Das PDF konnte nicht erstellt werden. Alternativ oben „Drucken“ wählen und dort „Als PDF speichern“.');
     } finally {
-      sheet.classList.remove('export');
       pdfBusy = false;
       btnPdf.classList.remove('busy');
       btnPdf.textContent = 'PDF herunterladen';
+    }
+  });
+
+  /* ---------- Leere PDF-Vorlage ---------- */
+  const btnVorlage = $('#btn-vorlage');
+  let vorlageBusy = false;
+  btnVorlage.addEventListener('click', async () => {
+    if (vorlageBusy) return;
+    if (!window.html2canvas || !window.jspdf) {
+      statusEl.textContent = 'Das PDF-Werkzeug konnte nicht geladen werden (keine Internetverbindung?). Alternativ oben „Drucken“ wählen, „Alles leeren“ und dort „Als PDF speichern“.';
+      return;
+    }
+    vorlageBusy = true;
+    btnVorlage.classList.add('busy');
+    const label = btnVorlage.textContent;
+    btnVorlage.textContent = 'Vorlage wird erstellt …';
+    const textBackup = fields.map(el => el.textContent);
+    try {
+      fields.forEach(el => { el.textContent = ''; el.classList.remove('voll', 'fehlt'); });
+      $('#pic-foto').style.backgroundImage = '';
+      $('#pic-bild').style.backgroundImage = '';
+      $('#btn-foto').classList.remove('has');
+      $('#btn-bild').classList.remove('has');
+      await renderPdf('Steckbrief-Vorlage', 'Steckbrief-Vorlage-' + state.design + '.pdf');
+    } catch (e) {
+      statusEl.textContent = 'Die leere Vorlage konnte nicht erstellt werden. Alternativ oben „Drucken“ wählen, „Alles leeren“ und dort „Als PDF speichern“.';
+    } finally {
+      fields.forEach((el, i) => { el.textContent = textBackup[i]; });
+      renderImg('foto'); renderImg('bild');
+      checkAll();
+      vorlageBusy = false;
+      btnVorlage.classList.remove('busy');
+      btnVorlage.textContent = label;
     }
   });
 

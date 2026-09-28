@@ -1,6 +1,6 @@
 # KG-Steckbrief
 
-A fillable, single-page "Steckbrief" (profile sheet) parents fill out when running for the Kita's Elternbeirat. Four switchable designs, works in any browser, no server needed.
+A fillable, single-page "Steckbrief" (profile sheet) parents fill out when running for the Kita's Elternbeirat. Five switchable designs, works in any browser, no server needed.
 
 **Live page:** enable GitHub Pages first (see below), then it's at
 `https://nicochristie.github.io/KG-Steckbrief/`
