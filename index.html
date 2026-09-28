@@ -697,20 +697,29 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       <ellipse cx="-10" cy="39" rx="6" ry="3" fill="${Or}"/><ellipse cx="10" cy="39" rx="6" ry="3" fill="${Or}"/></g>`;
   }
   function unicorn(x, y, s) {
-    const B = '#FFFFFF', Ho = '#FFE3F0', M1 = '#FF8FC7', M2 = '#C9A6FF', M3 = '#8FD9FF', H = '#F7C52B', D = '#4A2E4F';
+    const B = '#FFFFFF', Ho = '#FFE3F0', M1 = '#FF8FC7', M2 = '#C9A6FF', M3 = '#8FD9FF', H = '#F7C52B', Hd = '#E8A93A', D = '#4A2E4F';
     return `<g transform="translate(${x} ${y}) scale(${s})">
-      <rect x="-38" y="112" width="9" height="24" rx="3.5" fill="${B}"/><rect x="-16" y="112" width="9" height="24" rx="3.5" fill="${B}"/>
-      <rect x="10" y="112" width="9" height="24" rx="3.5" fill="${B}"/><rect x="30" y="112" width="9" height="24" rx="3.5" fill="${B}"/>
-      <ellipse cx="0" cy="86" rx="52" ry="42" fill="${B}"/><ellipse cx="4" cy="96" rx="30" ry="26" fill="${Ho}"/>
-      <path d="M-38 58 Q-60 16 -44 -14 Q-30 8 -34 44Z" fill="${M1}"/>
-      <path d="M-28 48 Q-48 10 -32 -18 Q-18 6 -22 40Z" fill="${M2}"/>
-      <path d="M-16 44 Q-34 8 -20 -20 Q-6 4 -10 36Z" fill="${M3}"/>
-      <path d="M40 26 Q66 30 74 52 Q56 46 44 40Z" fill="${M2}"/>
-      <ellipse cx="-2" cy="-8" rx="32" ry="28" fill="${B}"/>
-      <polygon points="12,-44 20,-6 2,-10" fill="${H}"/>
-      <circle cx="-14" cy="-10" r="3.6" fill="${D}"/>
-      <path d="M-22 4 Q-13 11 -4 4" stroke="${D}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <ellipse cx="-8" cy="18" rx="7" ry="4" fill="${M1}" opacity=".6"/></g>`;
+      <path d="M38 56 Q62 48 66 26 Q70 52 55 64 Q66 65 72 82 Q55 82 44 70Z" fill="${M2}"/>
+      <path d="M36 60 Q54 54 58 38 Q59 56 47 66Z" fill="${M3}"/>
+      <path d="M34 64 Q47 60 51 48 Q50 62 41 68Z" fill="${M1}"/>
+      <rect x="-34" y="112" width="9" height="28" rx="4" fill="${B}"/><rect x="-12" y="112" width="9" height="28" rx="4" fill="${B}"/>
+      <rect x="9" y="112" width="9" height="28" rx="4" fill="${B}"/><rect x="31" y="112" width="9" height="28" rx="4" fill="${B}"/>
+      <ellipse cx="0" cy="88" rx="48" ry="44" fill="${B}"/><ellipse cx="4" cy="98" rx="26" ry="24" fill="${Ho}"/>
+      <ellipse cx="-2" cy="46" rx="30" ry="26" fill="${B}"/>
+      <g transform="rotate(-25 -18 -14)"><ellipse cx="-18" cy="-14" rx="8" ry="14" fill="${B}"/><ellipse cx="-18" cy="-11" rx="4" ry="8" fill="${Ho}"/></g>
+      <g transform="rotate(20 12 -18)"><ellipse cx="12" cy="-18" rx="8" ry="14" fill="${B}"/><ellipse cx="12" cy="-15" rx="4" ry="8" fill="${Ho}"/></g>
+      <path d="M28 50 Q46 22 34 -6 Q22 12 24 38Z" fill="${M1}"/>
+      <path d="M20 46 Q34 18 24 -8 Q14 10 16 36Z" fill="${M2}"/>
+      <path d="M12 42 Q24 16 16 -10 Q8 8 8 34Z" fill="${M3}"/>
+      <ellipse cx="-6" cy="6" rx="34" ry="30" fill="${B}"/>
+      <ellipse cx="-30" cy="18" rx="12" ry="9" fill="${B}"/>
+      <path d="M-8 -14 Q-10 -36 -1 -54 Q6 -36 3 -14Z" fill="${H}"/>
+      <path d="M-6 -23 Q-1 -26 2 -30 M-4 -34 Q0 -37 2 -41" stroke="${Hd}" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="-20" cy="2" r="4" fill="${D}"/>
+      <path d="M-25 -3 Q-22 -6.5 -18 -5" stroke="${D}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <circle cx="-37" cy="17" r="2" fill="${D}"/>
+      <path d="M-40 22 Q-30 27 -22 21" stroke="${D}" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="-15" cy="22" rx="6" ry="3.5" fill="${M1}" opacity=".55"/></g>`;
   }
   const sparkle = (x, y, s, c) => `<g transform="translate(${x} ${y}) scale(${s})" fill="${c}"><path d="M0 -16 Q3.5 -3.5 16 0 Q3.5 3.5 0 16 Q-3.5 3.5 -16 0 Q-3.5 -3.5 0 -16Z"/></g>`;
   const leaf = (x, y, rot, c) => `<path transform="translate(${x} ${y}) rotate(${rot})" d="M0 0 Q9 -9 20 0 Q9 9 0 0Z" fill="${c}"/>`;
@@ -851,6 +860,7 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       s += `<path d="M0 1030 Q 160 985 330 1020 T 660 1002 T 794 992 V1123 H0Z" fill="#FFE7F2"/>`;
       s += `<path d="M0 1074 Q 220 1034 430 1068 T 794 1054 V1123 H0Z" fill="#FFD0E8"/>`;
       s += unicorn(170, 972, .82);
+      s += sparkle(233, 908, .55, gold);
       [[70, 1060, pink], [300, 1050, gold], [440, 1064, lav], [600, 1046, mint], [700, 1068, pink]]
         .forEach(([x, y, c]) => { s += flower(x, y, c); });
       return svg(s);
