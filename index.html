@@ -146,7 +146,9 @@
   }
   .deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
   .deco svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .sheet > :not(.deco) { position: relative; z-index: 1; }
+  .deco-fg { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+  .deco-fg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sheet > :not(.deco):not(.deco-fg) { position: relative; z-index: 1; }
 
   .kopf { grid-area: kopf; display: flex; flex-direction: column; gap: 8px; min-height: 120px; }
   .titel { margin: 0; font-family: var(--f-display); line-height: 1.05; text-wrap: balance; }
@@ -450,6 +452,7 @@
   <div class="sheet-wrap" id="wrap">
     <article class="sheet d-regenbogen" id="sheet">
       <div class="deco" id="deco" aria-hidden="true"></div>
+      <div class="deco-fg" id="deco-fg" aria-hidden="true"></div>
 
       <header class="kopf">
         <div class="ed single eyebrow" id="f-kopf" data-f="kopf" aria-label="Kita und Jahr" data-ph="Name der Kita · Elternbeirat 2026/27"></div>
@@ -562,7 +565,7 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-  const sheet = $('#sheet'), wrap = $('#wrap'), stage = $('#stage'), deco = $('#deco');
+  const sheet = $('#sheet'), wrap = $('#wrap'), stage = $('#stage'), deco = $('#deco'), decoFg = $('#deco-fg');
   const statusEl = $('#status');
   const fields = $$('.ed[data-f]');
 
@@ -835,11 +838,15 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
       }
       s += `<path d="M0 1030 Q 160 985 330 1020 T 660 1002 T 794 992 V1123 H0Z" fill="#FFE7F2"/>`;
       s += `<path d="M0 1074 Q 220 1034 430 1068 T 794 1054 V1123 H0Z" fill="#FFD0E8"/>`;
-      s += `<image href="${UNICORN_IMG}" x="54" y="842" width="262" height="262"/>`;
       [[70, 1060, pink], [300, 1050, gold], [440, 1064, lav], [600, 1046, mint], [700, 1068, pink]]
         .forEach(([x, y, c]) => { s += flower(x, y, c); });
       return svg(s);
     }
+  };
+
+  /* Über den Inhaltsboxen: Bilder, die nicht dahinter verschwinden sollen. */
+  const DECO_FG = {
+    einhorn: () => svg(`<image href="${UNICORN_IMG}" x="54" y="842" width="262" height="262"/>`)
   };
 
   $('#stats').innerHTML =
@@ -1019,6 +1026,7 @@ const PFLICHT = ['name', 'kind', 'gruppe', 'schaetze'];
     $$('.chip').forEach(c => c.setAttribute('aria-pressed', String(c.dataset.design === d)));
     renderLabels(d);
     deco.innerHTML = DECO[d]();
+    decoFg.innerHTML = DECO_FG[d] ? DECO_FG[d]() : '';
     if (!keepHash) { try { history.replaceState(null, '', '#' + d); } catch (e) { /* egal */ } }
     requestAnimationFrame(checkAll);
     save();
